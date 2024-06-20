@@ -1,0 +1,19 @@
+import { useContext } from "react";
+import { TaskContext } from "../context/TaskContext"; //Importa el nombre del contexto
+
+export default function TaskCard({ task }) {
+  const { deleteTask } = useContext(TaskContext); //Uso el contexto para acceder a la funcion deleteTask
+
+  return (
+    <div className="bg-slate-700 text-white p-4 rounded-md">
+      <h1 className="text-xl font-bold capitalize">{task.title}</h1>
+      <p className="text-gray-500 text-sm">{task.description}</p>
+      <button
+        className="bg-cyan-300 px-2 py-1 rounded-md mt-4 hover:bg-cyan-100 text-black"
+        onClick={() => deleteTask(task.id)}
+      >
+        Eliminar tarea
+      </button>
+    </div>
+  );
+}
